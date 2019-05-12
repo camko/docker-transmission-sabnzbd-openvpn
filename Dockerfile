@@ -5,8 +5,17 @@
 FROM ubuntu:18.04
 MAINTAINER Rick Scherer
 
+# environment settings
+ARG DEBIAN_FRONTEND="noninteractive"
+ENV HOME="/config" \
+PYTHONIOENCODING=utf-8
+
 VOLUME /downloads
 VOLUME /config
+
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en 
 
 # Update packages and install software
 RUN apt-get update \
@@ -14,9 +23,10 @@ RUN apt-get update \
     && add-apt-repository multiverse \
     && add-apt-repository ppa:transmissionbt/ppa \
     && add-apt-repository ppa:jcfp/ppa \
+    && add-apt-repository -y ppa:jcfp/sab-addons \
     && apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
-    && apt-get install -y sabnzbdplus \
+    && apt-get install -y sabnzbdplus par2-tbb python-sabyenc \
     && apt-get install -y openvpn curl rar unrar zip unzip wget \
     && curl -sLO https://github.com/Yelp/dumb-init/releases/download/v1.0.1/dumb-init_1.0.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
