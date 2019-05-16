@@ -69,7 +69,7 @@ By default a folder named transmission-home will also be created under /data, th
 |----------|----------|-------|
 |`OPENVPN_CONFIG` | Sets the OpenVPN endpoint to connect to. | `OPENVPN_CONFIG=UK Southampton`|
 |`OPENVPN_OPTS` | Will be passed to OpenVPN on startup | See [OpenVPN doc](https://openvpn.net/index.php/open-source/documentation/manuals/65-openvpn-20x-manpage.html) |
-|`LOCAL_NETWORK` | Sets the local network that should have access. | `LOCAL_NETWORK=192.168.0.0/24`|
+|`LOCAL_NETWORK` | Sets the local network that should have access.  Multiple networks can be added, comma separated. | `LOCAL_NETWORK=192.168.0.0/24`|
 
 ### Transmission configuration options
 
