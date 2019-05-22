@@ -18,7 +18,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en 
 
 # Update packages and install software
-RUN apt-get update \
+RUN locale-gen en_US.UTF-8 \
+    && apt-get update \
     && apt-get -y install software-properties-common \
     && add-apt-repository multiverse \
     && add-apt-repository ppa:transmissionbt/ppa \
@@ -28,7 +29,6 @@ RUN apt-get update \
     && apt-get install -y transmission-cli transmission-common transmission-daemon \
     && apt-get install -y sabnzbdplus par2-tbb python-sabyenc \
     && apt-get install -y openvpn curl rar unrar zip unzip wget net-tools sudo \
-    && locale-gen en_US.UTF-8 \
     && curl -sLO https://github.com/Yelp/dumb-init/releases/download/v1.0.1/dumb-init_1.0.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
     && rm -rf dumb-init_*.deb \
